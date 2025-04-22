@@ -9,17 +9,30 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <div class="w-full h-full bg-zinc-900 p-10 text-white">
-      <h1 class="text-3xl tracking-tighter mb-3">All Users</h1>
-      <div class="users">
-        <div class="user max-w-72 p-4 bg-zinc-800 rounded-lg">
-          <div class="w-full h-52 rounded-lg bg-red-500"></div>
-          <h3 class="text-xl mt-3 tracking-tighter">Daud Ali Khan</h3>
-          <h3 class="text-zinc-500">daudu6044@gmail.com</h3>
+    <div class="w-full h-max min-h-full bg-zinc-900 p-10 text-white">
+      <a class="text-blue-500" href="/">Back to home</a>
+      <h1 class="text-3xl tracking-tighter mb-3 mt-10">All Users</h1>
+      <div class="users flex gap-3 flex-wrap">
+        <% if(users.length>0){%> <% users.forEach((user)=>{%>
+        <div class="user min-w-72 basis-1/5 p-4 bg-zinc-800 rounded-lg">
+          <div class="w-full h-52 rounded-lg bg-zinc-500">
+            <img
+              class="w-full h-full object-fit"
+              src="<%= user.url%>"
+              alt="user-image"
+            />
+          </div>
+          <h3 class="text-xl mt-3 tracking-tighter"><%= user.name%></h3>
+          <h3 class="text-zinc-500"><%= user.email%></h3>
+          <div class="flex gap-3 mt-3">
+            <a class="text-zinc-200" href="">Edit User</a>
+            <a class="text-red-500" href="">Delete User</a>
+          </div>
         </div>
+        <% })%> <% }else{%>
+        <h3 class="w-full text-2xl text-center mt-10 text-zinc-500 ">No users yet.</h3>
+        <%}%>
       </div>
     </div>
-
-    <script src="/javascripts/script.js"></script>
   </body>
 </html>
