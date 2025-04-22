@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management - All Users</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-zinc-900 text-gray-200 min-h-screen font-sans">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <!-- Navigation -->
+      <nav class="mb-10 flex justify-between items-center">
+        <div class="text-xl font-bold text-white">User Management</div>
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2 text-green-400 hover:text-green-300 transition duration-300">
+            <img src="/images/home-icon.svg" alt="Home" class="h-5 w-5" style="filter: invert(70%);">
+            Create New User
+          </a>
+        </div>
+      </nav>
+      
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-white tracking-tight">All Users</h1>
+        <p class="text-zinc-400 mt-1">Manage all users in the system</p>
+      </div>
+      
+      <!-- User Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <% if(users.length > 0) { %>
+          <% users.forEach((user) => { %>
+            <!-- User Card -->
+            <div class="bg-zinc-800 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl hover:transform hover:scale-[1.02]">
+              <!-- User Image -->
+              <div class="w-full h-52 bg-zinc-700 overflow-hidden relative">
+                <% if(user.url) { %>
+                  <img class="w-full h-full object-cover object-top" src="<%= user.url %>" alt="<%= user.name %>'s profile photo">
+                <% } else { %>
+                  <div class="w-full h-full flex items-center justify-center bg-zinc-600">
+                    <img src="/images/user-icon.svg" alt="Default User" class="h-16 w-16" style="filter: invert(30%);">
+                  </div>
+                <% } %>
+              </div>
+              
+              <!-- User Info -->
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-white mb-1 truncate"><%= user.name %></h3>
+                <p class="text-zinc-400 text-sm mb-4 truncate"><%= user.email %></p>
+                
+                <!-- Action Buttons -->
+                <div class="flex gap-3">
+                  <a href="/edit/<%= user._id %>" class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-zinc-700 hover:bg-zinc-600 rounded-lg transition duration-200 text-center">
+                    <img src="/images/edit-icon.svg" alt="Edit" class="h-4 w-4" style="filter: invert(70%);">
+                    Edit
+                  </a>
+                  <a href="/delete/<%= user._id %>" class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded-lg transition duration-200 text-center">
+                    <img src="/images/trash-icon.svg" alt="Delete" class="h-4 w-4" style="filter: invert(60%) sepia(50%) saturate(1000%) hue-rotate(310deg);">
+                    Delete
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <!-- Empty State -->
+          <div class="col-span-full py-16">
+            <div class="text-center">
+              <img src="/images/users-icon.svg" alt="No Users" class="h-20 w-20 mx-auto mb-4" style="filter: invert(30%);">
+              <h3 class="text-2xl font-medium text-zinc-400 mb-2">No users yet</h3>
+              <p class="text-zinc-500 mb-6">Get started by creating your first user</p>
+              <a href="/" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3 px-6 rounded-lg font-medium transition duration-200">
+                <img src="/images/user-plus-icon.svg" alt="Add" class="h-5 w-5" style="filter: invert(100%);">
+                Create First User
+              </a>
+            </div>
+          </div>
+        <% } %>
+      </div>
+      
+      <!-- Footer -->
+      <div class="mt-16 text-center text-zinc-500 text-sm">
+        &copy; 2025 User Management System. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>

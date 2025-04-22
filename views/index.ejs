@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-zinc-900 text-gray-200 min-h-screen font-sans">
+    <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <!-- Navigation -->
+      <nav class="mb-10 flex justify-between items-center">
+        <div class="text-xl font-bold text-white">User Management</div>
+        <a href="/read" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition duration-300">
+          <img src="/images/eye-icon.svg" alt="View" class="h-5 w-5"  style="filter: invert(70%);">
+          View All Users
+        </a>
+      </nav>
+      
+      <!-- Card container -->
+      <div class="bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
+        <!-- Card header -->
+        <div class="bg-zinc-700 px-6 py-4 border-b border-zinc-600">
+          <h1 class="text-2xl font-bold text-white">Create New User</h1>
+          <p class="text-zinc-400 mt-1">Enter the details to add a new user to the system</p>
+        </div>
+        
+        <!-- Form -->
+        <form action="/create" method="post" class="p-6 space-y-4">
+          <div class="space-y-4">
+            <!-- Name field -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-zinc-300 mb-1">Full Name</label>
+              <div class="relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="/images/user-icon.svg" alt="User" class="h-5 w-5 text-zinc-500"  style="filter: invert(70%);">
+                </div>
+                <input type="text" name="name" id="name" class="bg-zinc-900 border border-zinc-700 focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 pr-3 py-3 rounded-lg text-white" placeholder="John Doe" required>
+              </div>
+            </div>
+            
+            <!-- Email field -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-zinc-300 mb-1">Email Address</label>
+              <div class="relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="/images/email-icon.svg" alt="Email" class="h-5 w-5 text-zinc-500"  style="filter: invert(70%);">
+                </div>
+                <input type="email" name="email" id="email" class="bg-zinc-900 border border-zinc-700 focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 pr-3 py-3 rounded-lg text-white" placeholder="john@example.com" required>
+              </div>
+            </div>
+            
+            <!-- Image URL field -->
+            <div>
+              <label for="url" class="block text-sm font-medium text-zinc-300 mb-1">Profile Image URL</label>
+              <div class="relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <img src="/images/image-icon.svg" alt="Image" class="h-5 w-5 text-zinc-500"  style="filter: invert(70%);">
+                </div>
+                <input type="url" name="url" id="url" class="bg-zinc-900 border border-zinc-700 focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 pr-3 py-3 rounded-lg text-white" placeholder="https://example.com/image.jpg">
+              </div>
+              <p class="mt-1 text-xs text-zinc-400">Leave empty to use default avatar</p>
+            </div>
+          </div>
+          
+          <!-- Submit button -->
+          <div class="mt-6 flex items-center">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white py-3 px-6 rounded-lg font-medium flex items-center transition duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none">
+              <img src="/images/user-plus-icon.svg" alt="Add" class="h-5 w-5 mr-2" style="filter: invert(100%);">
+              Create User
+            </button>
+            <!-- <a href="/cancel" class="ml-4 text-zinc-400 hover:text-zinc-300 transition duration-200">Cancel</a> -->
+          </div>
+        </form>
+      </div>
+      
+      <!-- Footer -->
+      <div class="mt-8 text-center text-zinc-500 text-sm">
+        &copy; 2025 User Management System. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
